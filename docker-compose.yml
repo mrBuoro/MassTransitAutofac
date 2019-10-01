@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+
+  rabbit:
+    image: rabbitmq:3-management-alpine
+
+  client:
+    image: ${DOCKER_REGISTRY-}client
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+
+  server:
+    image: ${DOCKER_REGISTRY-}server
+    build:
+      context: .
+      dockerfile: Server/Dockerfile
+

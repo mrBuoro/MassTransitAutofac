@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+
+  rabbit:
+    ports:
+      - "4900:5672"    # Important: In a production environment your should remove the external port
+      - "4901:15672"   # Important: In a production environment your should remove the external port
+
+  client:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "59384:80"
+
+  server:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "59456:80"
